@@ -403,15 +403,23 @@ header {
   min-height: var(--headerHeight);
   transition: var(--transition-cub);
   z-index: 2;
+  display: flex;
+  align-items: center;
 }
 @media (max-width: 991.98px) {
   header {
     padding: 12px 0;
+    --headerHeight: 64px;
   }
 }
 header .logo img {
   height: 60px;
   transition: var(--transition-cub);
+}
+@media (max-width: 1199.98px) {
+  header .logo img {
+    height: 48px;
+  }
 }
 header .main-navigation ul {
   display: flex;
@@ -435,6 +443,13 @@ header .main-navigation ul .nav-link .nav-item {
   background: none;
   position: relative;
 }
+@media (max-width: 1199.98px) {
+  header .main-navigation ul .nav-link .nav-item {
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+  }
+}
 header .main-navigation ul .nav-link .nav-item::before {
   content: "";
   position: absolute;
@@ -455,15 +470,76 @@ header .main-navigation ul .nav-link .nav-item:hover::before {
   right: 8px;
 }
 
-.page-scrolled {
-  --headerHeight: 72px;
+@media (min-width: 992px) {
+  .page-scrolled {
+    --headerHeight: 72px;
+  }
 }
-.page-scrolled header .logo img {
-  height: 40px;
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .page-scrolled {
+    --headerHeight: 64px;
+  }
 }
-
+@media (min-width: 992px) {
+  .page-scrolled header .logo img {
+    height: 40px;
+  }
+}
 /* Sidebar
 --------------------------------------------------------------------------------------------------------*/
+@media (max-width: 991.98px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 240px;
+    background: var(--primary-light);
+    padding: 24px 16px;
+    box-shadow: 2px 0px 6px 0px rgba(0, 0, 0, 0.1019607843);
+    overflow-y: auto;
+    z-index: 3;
+    transition: var(--transition-cub);
+    margin-left: -240px;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar .sidebar-head {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .sidebar .sidebar-head .logo {
+    padding: 4px;
+    margin: 0 auto;
+  }
+  .sidebar .main-navigation ul {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 2;
+    opacity: 0;
+    transition: var(--transition-cub);
+    visibility: hidden;
+  }
+  .show-sidebar .sidebar {
+    margin-left: 0;
+  }
+  .show-sidebar .overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+  body:has(.show-sidebar) {
+    overflow: hidden;
+  }
+}
 /* Footer
 --------------------------------------------------------------------------------------------------------*/
 .footer {
@@ -509,6 +585,11 @@ header .main-navigation ul .nav-link .nav-item:hover::before {
   height: 100%;
   object-fit: contain;
   min-height: 500px;
+}
+@media (max-width: 1199.98px) {
+  .hero video {
+    object-fit: cover;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -184,15 +184,25 @@ header {
   min-height: var(--headerHeight);
   transition: var(--transition-cub);
   z-index: 2;
+  display: flex;
+  align-items: center;
 
+  @include media(xl) {
+  }
+  
   @include media(lg) {
     padding: 12px 0;
+    --headerHeight: 64px;
   }
 
   .logo {
     img {
       height: 60px;
       transition: var(--transition-cub);
+
+      @include media(xl) {
+        height: 48px;
+      }
     }
   }
 
@@ -214,6 +224,11 @@ header {
           transition: var(--transition-ease);
           background: none;
           position: relative;
+
+          @include media(xl) {
+            @include typography(ptr(18),
+              ptr(20));
+          }
 
           &::before {
             content: "";
@@ -242,13 +257,19 @@ header {
   }
 }
 
-.page-scrolled {
-  --headerHeight: 72px;
+@include media(lg, min) {
+  .page-scrolled {
+    --headerHeight: 72px;
 
-  header {
-    .logo {
-      img {
-        height: 40px;
+    @include media(xl) {
+      --headerHeight: 64px;
+    }
+
+    header {
+      .logo {
+        img {
+          height: 40px;
+        }
       }
     }
   }
@@ -256,6 +277,70 @@ header {
 
 /* Sidebar
 --------------------------------------------------------------------------------------------------------*/
+@include media(lg) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 240px;
+    background: var(--primary-light);
+    padding: 24px 16px;
+    box-shadow: 2px 0px 6px 0px #0000001A;
+    overflow-y: auto;
+    z-index: 3;
+    transition: var(--transition-cub);
+    margin-left: -240px;
+    display: flex;
+    flex-direction: column;
+
+    .sidebar-head {
+      text-align: center;
+      margin-bottom: 32px;
+
+      .logo {
+        padding: 4px;
+        margin: 0 auto;
+      }
+    }
+
+    .main-navigation {
+      ul {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 2;
+    opacity: 0;
+    transition: var(--transition-cub);
+    visibility: hidden;
+  }
+
+  .show-sidebar {
+    .sidebar {
+      margin-left: 0;
+    }
+
+    .overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  body:has(.show-sidebar) {
+    overflow: hidden;
+  }
+}
 
 /* Footer
 --------------------------------------------------------------------------------------------------------*/
@@ -298,14 +383,18 @@ header {
   // padding-bottom: 54.718%; // height 760px for 1560px760
   // padding-bottom: 48.718%; // height 760px for 1560px760
   // padding-bottom: 45.385%; // height 708px for 1560px
-  
   z-index: 0;
-  video{
+
+  video {
     // position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: contain;
     min-height: 500px;
+
+    @include media(xl) {
+      object-fit: cover;
+    }
   }
 }

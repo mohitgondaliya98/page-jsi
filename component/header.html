@@ -6,10 +6,14 @@
             </a>
         </div>
         <div class="col d-flex justify-content-end align-items-center">
+
+            <!-- sidebar start -->
             <aside class="sidebar">
-                <a href="/" class="logo d-lg-none d-inline-block">
-                    <img src="images/logo.svg" alt="Page JSI Company">
-                </a>
+                <div class="sidebar-head d-lg-none d-inline-block">
+                    <a href="/" class="logo">
+                        <img src="images/logo.svg" alt="Page JSI Company">
+                    </a>
+                </div>
                 <nav class="main-navigation">
                     <ul>
                         <li class="nav-link">
@@ -32,9 +36,14 @@
                         </li>
                     </ul>
             </aside>
-            <button type="button" class="btn btn-icon btn-light d-lg-none d-flex" id="scrollToTop">
-                <img src="images/menu.svg" alt="Scroll To Top">
+            <!-- sidebar end -->
+
+            <button type="button" class="btn btn-icon btn-light d-lg-none d-flex" id="toggleMenu">
+                <img src="images/menu.svg" alt="Menu">
             </button>
+
+            <!-- overlay -->
+            <a href="#" class="overlay" id="OverLayer"></a>
         </div>
     </div>
 </div>

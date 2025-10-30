@@ -27,6 +27,18 @@ $(function () {
 
       // Highlight active link
       highlightActiveLink();
+
+      // When menu button is clicked — open sidebar
+      $('#toggleMenu').on('click', function (e) {
+        e.preventDefault();
+        $('.wrapper').addClass('show-sidebar');
+      });
+
+      // When overlay is clicked — close sidebar
+      $('#OverLayer').on('click', function (e) {
+        e.preventDefault();
+        $('.wrapper').removeClass('show-sidebar');
+      });
     });
   }
 
@@ -43,7 +55,7 @@ $(function () {
       // Scroll To Top
       $('#scrollToTop').on('click', function () {
         $('html, body').animate({ scrollTop: 0 }, 600); // 600ms for smooth scroll
-      }); 
+      });
     });
   }
 
