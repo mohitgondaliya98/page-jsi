@@ -1,0 +1,151 @@
+@use "sass:math";
+
+// -------------------
+// Flexbox helper mixin
+// -------------------
+@mixin flexbox($align: center,
+  $justify: null,
+  $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+
+  @if $justify !=null {
+    justify-content: $justify;
+  }
+}
+
+
+// -------------------
+// ptr function
+// -------------------
+@function ptr($px, $base: 16) {
+  $px-value: if(math.is-unitless($px), $px, math.div($px, 1px));
+  @return math.div($px-value, $base) * 1rem;
+}
+
+// -------------------
+// Typography helper mixin
+// -------------------
+@mixin typography($size: 1rem,
+  $line-height: 1.5,
+  $weight: 400,
+  $color: null) {
+  font-size: $size;
+  line-height: $line-height;
+
+  @if $weight !=null {
+    font-weight: $weight;
+  }
+
+  @if $color !=null {
+    color: $color;
+  }
+}
+
+// -------------------
+// Margin Padding helper mixin
+// -------------------
+$spacings: (
+  0,
+  4,
+  8,
+  16,
+  32
+);
+
+@each $space in $spacings {
+
+  // Positive padding
+  .p-#{$space} {
+    padding: ptr($space) !important;
+  }
+
+  // Positive margin
+  .m-#{$space} {
+    margin: ptr($space) !important;
+  }
+
+  // Negative margin (only if not zero)
+  @if $space !=0 {
+    .m-n#{$space} {
+      margin: ptr(-$space) !important;
+    }
+  }
+}
+
+%btn-shared {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+
+// Arbitrary Tailwind-style spacing classes (using CSS variable)
+[class*="p-["],
+[class*="m-["] {
+  --val: 0; // fallback
+}
+
+/* Padding (all sides) */
+[class*="p-["] {
+  padding: var(--val) !important;
+}
+
+/* Padding X/Y */
+[class*="px-["] {
+  padding-left: var(--val) !important;
+  padding-right: var(--val) !important;
+}
+
+[class*="py-["] {
+  padding-top: var(--val) !important;
+  padding-bottom: var(--val) !important;
+}
+
+/* Padding individual sides */
+[class*="pt-["] {
+  padding-top: var(--val) !important;
+}
+
+[class*="pr-["] {
+  padding-right: var(--val) !important;
+}
+
+[class*="pb-["] {
+  padding-bottom: var(--val) !important;
+}
+
+[class*="pl-["] {
+  padding-left: var(--val) !important;
+}
+
+/* Margins */
+[class*="m-["] {
+  margin: var(--val) !important;
+}
+
+[class*="mx-["] {
+  margin-left: var(--val) !important;
+  margin-right: var(--val) !important;
+}
+
+[class*="my-["] {
+  margin-top: var(--val) !important;
+  margin-bottom: var(--val) !important;
+}
+
+[class*="mt-["] {
+  margin-top: var(--val) !important;
+}
+
+[class*="mr-["] {
+  margin-right: var(--val) !important;
+}
+
+[class*="mb-["] {
+  margin-bottom: var(--val) !important;
+}
+
+[class*="ml-["] {
+  margin-left: var(--val) !important;
+}

@@ -1,0 +1,89 @@
+@use "./break-points" as *;
+@use "./mixin" as *;
+
+// Typography
+h1 {
+  @include typography(ptr(54),
+    ptr(70),
+    600,
+    var(--primary));
+
+  @include media(xl) {
+    @include typography(ptr(48),
+      ptr(60))
+  }
+
+  @include media(md) {
+    @include typography(ptr(36),
+      ptr(50))
+  }
+}
+
+h2 {
+  @include typography(ptr(42), ptr(50));
+
+  @include media(lg) {
+    @include typography(ptr(36),
+      ptr(42))
+  }
+
+  @include media(sm) {
+    @include typography(ptr(30),
+      ptr(36))
+  }
+}
+
+h3 {
+  @include typography(ptr(28),
+    ptr(34));
+
+  @include media(lg) {
+    @include typography(ptr(24),
+      ptr(32));
+  }
+
+  @include media(md) {
+    @include typography(ptr(22),
+      ptr(30));
+  }
+}
+
+h4 {
+  @include typography(ptr(24),
+    ptr(30));
+
+  @include media(md) {
+    @include typography(ptr(20),
+      ptr(28));
+  }
+}
+
+h5 {
+  @include typography(ptr(22),
+    ptr(28));
+
+  @include media(sm) {
+    @include typography(ptr(18),
+      ptr(24));
+  }
+}
+
+h6 {
+  @include typography(ptr(18),
+    ptr(24));
+}
+
+.body1 {
+  @include typography(ptr(16),
+    ptr(20));
+}
+
+.body2 {
+  @include typography(ptr(14),
+    ptr(20));
+}
+
+.caption {
+  @include typography(ptr(12),
+    ptr(16));
+}

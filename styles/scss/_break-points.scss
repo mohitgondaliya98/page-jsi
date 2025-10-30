@@ -1,0 +1,77 @@
+@use "sass:list";
+@use "sass:map";
+
+// -------------------
+// Breakpoints map
+// -------------------
+$breakpoints: (
+  xs: 376px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// -------------------
+// Helper: get query
+// -------------------
+@function breakpoint($point, $type: max) {
+  $value: map.get($breakpoints, $point);
+
+  @if not $value {
+    @warn "⚠️ Unknown breakpoint `#{$point}`.";
+    @return null;
+  }
+
+  @return if(
+    $type == min,
+    "(min-width: #{$value})",
+    if(
+      $type == max,
+      "(max-width: #{$value - 0.02})", // Bootstrap-style max
+      null
+    )
+  );
+}
+
+// -------------------
+// Media mixin
+// -------------------
+@mixin media($args...) {
+  $len: list.length($args);
+
+  // Case 1 & 2: single breakpoint or breakpoint + type
+  @if $len == 1 or $len == 2 {
+    $bp: list.nth($args, 1);
+    $type: if($len == 2, list.nth($args, 2), max);
+    $query: breakpoint($bp, $type);
+
+    @if $query {
+      @media #{$query} {
+        @content;
+      }
+    } @else {
+      @warn "⚠️ Invalid type `#{$type}`. Use `min` or `max`.";
+    }
+  }
+
+  // Case 3: (min to max) e.g. @include media(sm to lg)
+  @else if $len == 3 and list.nth($args, 2) == to {
+    $bp-min: list.nth($args, 1);
+    $bp-max: list.nth($args, 3);
+
+    $query-min: breakpoint($bp-min, min);
+    $query-max: breakpoint($bp-max, max);
+
+    @if $query-min and $query-max {
+      @media #{$query-min} and #{$query-max} {
+        @content;
+      }
+    }
+  }
+
+  @else {
+    @warn "⚠️ Invalid arguments for media mixin: #{$args}";
+  }
+}

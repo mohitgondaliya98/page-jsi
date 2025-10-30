@@ -1,0 +1,17 @@
+@use "sass:map";
+
+:root {
+  --primary: #60B8CC;
+  --primary-hover: #3f94a7;
+  --primary-light: #E4EFF2;
+  --white: #ffffff;
+  --primary2: #0D2954;
+  --black: #333333;
+  --color666666: #666666;
+
+  --font: "Outfit", sans-serif;
+
+  --transition-ease: all 200ms ease-in-out;
+  --transition-cub: all 400ms cubic-bezier(0.19, 1, 0.22, 1);
+  --headerHeight: 92px;
+}
