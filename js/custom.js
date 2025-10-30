@@ -20,11 +20,6 @@ $(function () {
         $toggleBtn.on('click', toggleSidebar);
       }
 
-      // if ($searchBtn.length && $closeBtn.length) {
-      //   $searchBtn.on('click', toggleSearchbar);
-      //   $closeBtn.on('click', toggleSearchbar);
-      // }
-
       // Highlight active link
       highlightActiveLink();
 
@@ -38,6 +33,16 @@ $(function () {
       $('#OverLayer').on('click', function (e) {
         e.preventDefault();
         $('.wrapper').removeClass('show-sidebar');
+      });
+
+      // Initialize Bootstrap ScrollSpy
+      const scrollSpy = new bootstrap.ScrollSpy(document.body, {
+        target: '#header'
+      });
+
+      // Refresh scrollspy if DOM changes
+      $(window).on('load', function () {
+        scrollSpy.refresh();
       });
     });
   }
@@ -127,42 +132,6 @@ $(function () {
   // Add Class on Window Load
   $("body").addClass("page-loaded");
 
-  // Theme Toggle
-  const $toggleBtn = $("#themeToggle");
-  const $themeIcon = $("#themeIcon");
-  const $dropdownItems = $(".dropdown-item");
-
-  // Load saved theme
-  const savedTheme = localStorage.getItem("theme") || "light";
-  $("html").attr("data-theme", savedTheme);
-  updateIcon(savedTheme);
-
-  // Toggle dark/light
-  $toggleBtn.on("click", function () {
-    let currentTheme = $("html").attr("data-theme");
-    let newTheme = currentTheme === "dark" ? "light" : "dark";
-    $("html").attr("data-theme", newTheme);
-    localStorage.setItem("theme", newTheme);
-    updateIcon(newTheme);
-  });
-
-  // Dropdown theme selection
-  $dropdownItems.on("click", function (e) {
-    e.preventDefault();
-    const selectedTheme = $(this).data("theme");
-    $("html").attr("data-theme", selectedTheme);
-    localStorage.setItem("theme", selectedTheme);
-    updateIcon(selectedTheme);
-  });
-
-  function updateIcon(theme) {
-    if (theme === "dark") {
-      $themeIcon.removeClass("bi-moon-fill").addClass("bi-sun-fill");
-    } else {
-      $themeIcon.removeClass("bi-sun-fill").addClass("bi-moon-fill");
-    }
-  }
-
   // AOS initialization
   AOS.init({
     duration: 1100,
@@ -198,5 +167,9 @@ $(function () {
     });
   });
 
+  // Initialize Bootstrap Tooltips
+  $('[data-bs-toggle="tooltip"]').each(function () {
+    new bootstrap.Tooltip(this);
+  });
 
 });

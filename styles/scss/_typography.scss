@@ -27,9 +27,14 @@ h2 {
       ptr(42))
   }
 
-  @include media(sm) {
+  @include media(md) {
     @include typography(ptr(30),
       ptr(36))
+  }
+
+  @include media(sm) {
+    @include typography(ptr(26),
+      ptr(32))
   }
 }
 

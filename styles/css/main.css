@@ -7,4 +7,17 @@
 @import "dev-style.css";
 
 /* Body Hidden till Load the page */
-body:not(.page-loaded) { opacity: 0; overflow: hidden;}
+body:not(.page-loaded) {
+    opacity: 0;
+    overflow: hidden;
+}
+
+@media (min-width: 1200px) {
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+        max-width: 1300px;
+    }
+}

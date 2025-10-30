@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "break-points" as *;
 
 :root {
   --primary: #60B8CC;
@@ -8,10 +9,15 @@
   --primary2: #0D2954;
   --black: #333333;
   --color666666: #666666;
+  --red: #E41F18;
 
   --font: "Outfit", sans-serif;
 
   --transition-ease: all 200ms ease-in-out;
   --transition-cub: all 400ms cubic-bezier(0.19, 1, 0.22, 1);
-  --headerHeight: 92px;
+  --headerHeight: 5.75rem;
+
+  @include media(lg) {
+    --headerHeight: 4rem;
+  }
 }

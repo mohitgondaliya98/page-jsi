@@ -18,16 +18,121 @@
     <header class="header" id="header"></header>
     <!-- End Header -->
 
-
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" data-bs-spy="scroll" data-bs-target="#header" data-bs-root-margin="200px"
+      data-bs-smooth-scroll="true">
+
+      <!-- Hero Banner Start -->
       <div class="hero">
-        <video playsinline autoplay loop preload="auto" loading="lazy" poster="images/hero-thumb.jpg">
+        <video autoplay controls loop preload="auto" loading="lazy" muted poster="images/hero-thumb.jpg">
           <source src="video/hero.mp4" type="video/mp4">
           Your browser does not support HTML5 video.
         </video>
       </div>
-      <div style="min-height: 200vh;"></div>
+      <!-- Hero Banner End -->
+
+      <!-- Side by side Info Start -->
+      <div class="container-xl">
+        <div class="info-block-wrapper">
+          <section class="section info-block" id="WhoWeAre">
+            <div class="row g-32p">
+              <div class="col-xl-6 text-xl-start text-center">
+                <div class="img-block">
+                  <img class="img-fluid" src="images/who-we-are.jpg" alt="About Us Image" loading="lazy" />
+                  <a target="_blank"
+                    href="https://www.ansa.it/liguria/notizie/2025/09/29/pagejsi-jv-italo-saudita-per-protezione-infrastrutture-critiche_319cfa4c-9e1b-4403-8757-d373a4c636d6.html#712bd17d8018c96bae9880ed599679546b1f5f41"
+                    class="center-box">
+                    <p>Check out news for</p>
+                    <h4>Italian-Saudi Jount Venture</h4>
+                  </a>
+                </div>
+              </div>
+              <div class="col-xl-6">
+                <h5 class="subtitle">Who We Are</h5>
+                <h2 class="title mb-4">Page JSI Company is the joint venture between Page Europa and Jana Marine
+                  Services
+                </h2>
+
+                <p class="desc"><strong>Page JSI</strong> company born from the merger of two major players, to deal
+                  with the
+                  challenges of the Energy and Critical Infrastructure sector with sophisticated, comprehensive and
+                  localized telecom and security solutions.</p>
+
+                <p class="desc"><strong>Page Europa</strong> has entered into a strategic partnership with
+                  <strong>Jana Marine Services
+                    Company LLC</strong>, a Saudi company wholly owned by the Rashed Al-Rashed & Sons group, founded
+                  in 2013 and
+                  active in the maritime logistics services sector serving the offshore Oil & Gas industry.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="section info-block" id="AboutUs">
+            <div class="row g-32p">
+              <div class="col-xl-6 order-xl-1 order-2">
+                <h5 class="subtitle">About Us</h5>
+                <h2 class="title mb-4">Page JSI offers solution for the telecom and security systems
+                </h2>
+
+                <p class="desc"><strong>Page JSI</strong> is the JV between Page Europa and Jana Marine
+                  Services, with the mission to deliver integrated telecommunications, cybersecurity and surveillance
+                  systems operating seamlessly together, enhancing operations, safety, and efficiency. Our involvement
+                  is critical from the planning and design phases through to the implementation, maintenance and
+                  upgrading of legacy telecom systems.</p>
+
+                <p class="desc"><strong>Page JSI</strong> offers HCIS compliant solutions for the telecom and
+                  security systems for the industry, including Oil & Gas platforms, substations, renewable energy
+                  plants or any large infrastructures such as ports, airports and data centers. Our capabilities
+                  enable a turn-key project delivery approach, from the front-end engineering to the design,
+                  procurement, integration, testing, on-site commissioning and maintenance.
+                </p>
+              </div>
+              <div class="col-xl-6 order-xl-2 order-1 d-flex justify-content-xl-end justify-content-center">
+                <div class="img-block mt-xl-4">
+                  <img class="img-fluid about" src="images/about-us.jpg" alt="About Us" loading="lazy" />
+                  <img class="about-us-pop" src="images/about-us-round.jpg" alt="About Us" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <!-- Side by side Info End -->
+
+      <!-- Where we operate Start -->
+      <section class="location-block section" id="ContactUs">
+        <h5 class="subtitle">Where We Operate</h5>
+        <h2 class="title mb-0">Page Group is engaged on projects across Europe, Africa, The Middle East and Asia</h2>
+        <div class="map-bg">
+          <span class="location italy">
+            <img src="images/location-red.svg" alt="Location" data-bs-toggle="tooltip" data-bs-placement="top"
+              data-bs-custom-class="location-tooltip" data-bs-title="Italy" />
+          </span>
+          <span class="location turkey">
+            <img src="images/location-red.svg" alt="Location" data-bs-toggle="tooltip" data-bs-placement="top"
+              data-bs-custom-class="location-tooltip" data-bs-title="Turkey" />
+          </span>
+          <span class="location saudi-arabia">
+            <img src="images/location-primary.svg" alt="Location" data-bs-toggle="tooltip" data-bs-placement="top"
+              data-bs-custom-class="location-tooltip" data-bs-title="Saudi Arabia" />
+          </span>
+          <span class="location oman">
+            <img src="images/location-red.svg" alt="Location" data-bs-toggle="tooltip" data-bs-placement="top"
+              data-bs-custom-class="location-tooltip" data-bs-title="Oman" />
+          </span>
+          <span class="location brunei">
+            <img src="images/location-red.svg" alt="Location" data-bs-toggle="tooltip" data-bs-placement="top"
+              data-bs-custom-class="location-tooltip" data-bs-title="Brunei" />
+          </span>
+        </div>
+        <ul class="location-category-list">
+          <li class="red">Page Group Headquarters</li>
+          <li class="primary">Page JSI Company</li>
+        </ul>
+      </section>
+      <!-- Where we operate End -->
+
     </main>
     <!-- End Main Content -->
   </div>

@@ -223,3 +223,6 @@ select:-moz-focusring {
 option:not(:checked) {
   color: black;
 }
+strong{
+  font-weight: 600;
+}
