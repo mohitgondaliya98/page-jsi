@@ -1,23 +1,22 @@
 $(function () {
-
-  const $header = $('#header');
-  const $footer = $('#footer');
+  const $header = $("#header");
+  const $footer = $("#footer");
 
   if ($header.length) {
     // Load header.html into #header
-    $header.load('./component/header.html', function (response, status, xhr) {
-      if (status === 'error') {
-        console.error('Error loading header:', xhr.status, xhr.statusText);
+    $header.load("./component/header.html", function (response, status, xhr) {
+      if (status === "error") {
+        console.error("Error loading header:", xhr.status, xhr.statusText);
         return;
       }
 
       // After header is successfully loaded
-      const $toggleBtn = $('#sidebarToggler');
+      const $toggleBtn = $("#sidebarToggler");
       // const $searchBtn = $('#searchToggler');
       // const $closeBtn = $('#closeSearch');
 
       if ($toggleBtn.length) {
-        $toggleBtn.on('click', toggleSidebar);
+        $toggleBtn.on("click", toggleSidebar);
       }
 
       // if ($searchBtn.length && $closeBtn.length) {
@@ -29,32 +28,32 @@ $(function () {
       highlightActiveLink();
 
       // When menu button is clicked — open sidebar
-      $('#toggleMenu').on('click', function (e) {
+      $("#toggleMenu").on("click", function (e) {
         e.preventDefault();
-        $('.wrapper').addClass('show-sidebar');
+        $(".wrapper").addClass("show-sidebar");
       });
 
       // When overlay is clicked — close sidebar
-      $('#OverLayer').on('click', function (e) {
+      $("#OverLayer").on("click", function (e) {
         e.preventDefault();
-        $('.wrapper').removeClass('show-sidebar');
+        $(".wrapper").removeClass("show-sidebar");
       });
     });
   }
 
   if ($footer.length) {
     // Load footer.html into #footer
-    $footer.load('./component/footer.html', function (response, status, xhr) {
-      if (status === 'error') {
-        console.error('Error loading footer:', xhr.status, xhr.statusText);
+    $footer.load("./component/footer.html", function (response, status, xhr) {
+      if (status === "error") {
+        console.error("Error loading footer:", xhr.status, xhr.statusText);
         return;
       }
       // Adjust Footer
       footerAdj();
 
       // Scroll To Top
-      $('#scrollToTop').on('click', function () {
-        $('html, body').animate({ scrollTop: 0 }, 600); // 600ms for smooth scroll
+      $("#scrollToTop").on("click", function () {
+        $("html, body").animate({ scrollTop: 0 }, 600); // 600ms for smooth scroll
       });
     });
   }
@@ -89,11 +88,11 @@ $(function () {
 
   // Highlight Active Link
   function highlightActiveLink() {
-    const current = window.location.pathname.split('/').pop();
-    $('.header .nav-item').each(function () {
-      const href = $(this).attr('href');
+    const current = window.location.pathname.split("/").pop();
+    $(".header .nav-item").each(function () {
+      const href = $(this).attr("href");
       if (href && href.indexOf(current) !== -1) {
-        $(this).addClass('active');
+        $(this).addClass("active");
       }
     });
   }
@@ -198,5 +197,28 @@ $(function () {
     });
   });
 
+  //custom tabs logic
+  const buttons = document.querySelectorAll(".btn-text");
+  const contents = document.querySelectorAll(".details");
 
+  // initialize: show content for the active button
+  buttons.forEach((btn) => {
+    const id = btn.dataset.target;
+    document
+      .getElementById(id)
+      .classList.toggle("show", btn.classList.contains("active"));
+  });
+
+  // handle click
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // remove active from all buttons
+      buttons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      // show only the matching content
+      contents.forEach((p) => p.classList.remove("show"));
+      document.getElementById(btn.dataset.target).classList.add("show");
+    });
+  });
 });

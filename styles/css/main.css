@@ -1,5 +1,5 @@
 /* Import All css here */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 @import "bootstrap.min.css";
 @import "reset.css";
 @import "aos.min.css";
@@ -7,4 +7,18 @@
 @import "dev-style.css";
 
 /* Body Hidden till Load the page */
-body:not(.page-loaded) { opacity: 0; overflow: hidden;}
+body:not(.page-loaded) {
+  opacity: 0;
+  overflow: hidden;
+}
+@media (min-width: 1400px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 1300px;
+  }
+}
+

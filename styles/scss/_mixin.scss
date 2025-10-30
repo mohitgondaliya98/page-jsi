@@ -74,9 +74,9 @@ $spacings: (
   }
 }
 
-%btn-shared {
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+@mixin custom-gutter($value) {
+  --bs-gutter-x: #{ptr($value)} !important;
+  --bs-gutter-y: #{ptr($value)} !important;
 }
 
 
