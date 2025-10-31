@@ -34,14 +34,47 @@ $(function () {
         $(".wrapper").removeClass("show-sidebar");
       });
 
-      // Initialize Bootstrap ScrollSpy
-      const scrollSpy = new bootstrap.ScrollSpy(document.body, {
-        target: '#header'
+      // Script for ScrollSpy functionality
+      const $sections = $("section");
+      const $navLinks = $(".nav-item");
+
+      const offset = 72; // adjust based on navbar height
+
+      $(window).on("scroll", function () {
+        const scrollPos = $(this).scrollTop();
+        let currentSectionId = "";
+
+        $sections.each(function () {
+          const top = $(this).offset().top - offset;
+          const bottom = top + $(this).outerHeight();
+
+          if (scrollPos >= top && scrollPos < bottom) {
+            const id = $(this).attr("id");
+
+            $navLinks.removeClass("active");
+            $navLinks.filter(`[href="#${id}"]`).addClass("active");
+          }
+        });
+
+        if (currentSectionId) {
+          // Update nav links
+          $navLinks.removeClass("active");
+          $navLinks.filter(`[href="#${currentSectionId}"]`).addClass("active");
+
+          // Update section classes
+          $sections.removeClass("active");
+          $("#" + currentSectionId).addClass("active");
+        }
       });
 
-      // Refresh scrollspy if DOM changes
-      $(window).on('load', function () {
-        scrollSpy.refresh();
+      // optional: add smooth scroll for nav clicks
+      $navLinks.on("click", function (e) {
+        e.preventDefault();
+        const target = $(this).attr("href");
+
+        $("html, body").animate({
+          scrollTop: $(target).offset().top - offset + 1
+        }, 500);
       });
     });
   }

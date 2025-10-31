@@ -720,6 +720,11 @@ header {
   &.info-block {
     padding: ptr(50) ptr(12);
 
+    .title,
+    .subtitle {
+      text-align: left;
+    }
+
     @include media(lg) {
       padding: ptr(40) ptr(12);
     }
@@ -806,7 +811,7 @@ header {
 
       &.brunei {
         top: 56.4%;
-        left: 76.5%;
+        left: 64.8%;
       }
     }
   }

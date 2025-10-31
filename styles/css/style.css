@@ -940,6 +940,10 @@ header .main-navigation ul .nav-link .nav-item:hover::before, header .main-navig
 .section.info-block {
   padding: 3.125rem 0.75rem;
 }
+.section.info-block .title,
+.section.info-block .subtitle {
+  text-align: left;
+}
 @media (max-width: 991.98px) {
   .section.info-block {
     padding: 2.5rem 0.75rem;
@@ -1024,7 +1028,7 @@ header .main-navigation ul .nav-link .nav-item:hover::before, header .main-navig
 }
 .location-block .map-bg .location.brunei {
   top: 56.4%;
-  left: 76.5%;
+  left: 64.8%;
 }
 .location-block .location-category-list {
   display: flex;
