@@ -66,15 +66,17 @@ $(function () {
           $("#" + currentSectionId).addClass("active");
         }
       });
-
       // optional: add smooth scroll for nav clicks
       $navLinks.on("click", function (e) {
         e.preventDefault();
         const target = $(this).attr("href");
+        $(".wrapper").removeClass("show-sidebar");
 
-        $("html, body").animate({
-          scrollTop: $(target).offset().top - offset + 1
-        }, 500);
+        const targetPosition = $(target).offset().top - offset;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth" // or "auto" for instant linear scroll
+        });
       });
     });
   }
@@ -91,7 +93,10 @@ $(function () {
 
       // Scroll To Top
       $("#scrollToTop").on("click", function () {
-        $("html, body").animate({ scrollTop: 0 }, 600); // 600ms for smooth scroll
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth" // or "auto" for instant linear scroll
+        });
       });
     });
   }

@@ -338,7 +338,7 @@ header {
     overflow-y: auto;
     z-index: 3;
     transition: var(--transition-cub);
-    margin-left: ptr(-240);
+    margin-left: ptr(-300);
     display: flex;
     flex-direction: column;
 
@@ -473,6 +473,7 @@ header {
 --------------------------------------------------------------------------------------------------------*/
 .main-content {
   padding-top: var(--headerHeight);
+  overflow: hidden;
 }
 
 /* Hero Section
@@ -486,11 +487,10 @@ header {
 
   video {
     // position: absolute;
-    inset: 0;
+    // inset: 0;
     width: 100%;
     height: 100%;
     object-fit: contain;
-    min-height: ptr(500);
 
     @include media(xl) {
       object-fit: cover;
@@ -506,6 +506,10 @@ header {
   position: relative;
 
   @include media (lg) {
+    padding: ptr(50) ptr(16);
+  }
+
+  @include media (sm) {
     padding: ptr(50) 0;
   }
 
@@ -514,7 +518,11 @@ header {
   }
 
   &:has(.details-row) {
-    padding-inline: ptr(20);
+    padding-inline: ptr(16);
+
+    @include media (sm) {
+      padding-inline: 0;
+    }
   }
 
   &:has(.company-div) {
@@ -569,6 +577,10 @@ header {
       padding: 0;
     }
 
+    @include media (sm) {
+      max-width: none;
+    }
+
     .img-bg {
       background-color: var(--white);
       border-radius: 50%;
@@ -611,6 +623,12 @@ header {
     @include flexbox(center, center);
     border-radius: 16px;
     overflow: hidden;
+
+    img {
+      @include media (sm) {
+        min-height: 200px;
+      }
+    }
   }
 
   .offers-list {
@@ -734,6 +752,10 @@ header {
     @include media(lg) {
       padding: ptr(40) ptr(12);
     }
+
+    @include media(sm) {
+      padding: ptr(30) 0;
+    }
   }
 }
 
@@ -808,16 +830,32 @@ header {
       &.saudi-arabia {
         top: 44.2%;
         left: 57.6%;
+
+        @include media(lg) {
+          left: 55.5%;
+        }
       }
 
       &.oman {
         top: 45.5%;
         left: 61.4%;
+
+        @include media(lg) {
+          left: 58.4%;
+        }
       }
 
       &.brunei {
         top: 56.4%;
         left: 64.8%;
+
+        @include media(lg) {
+          left: 72%;
+        }
+
+        @include media(sm) {
+          left: 72%;
+        }
       }
     }
   }
@@ -921,17 +959,20 @@ header {
     display: block;
     border-radius: 16px;
     min-height: 100%;
+
     @include media (lg) {
       max-width: 400px;
       margin: 0 auto;
+    }
 
+    @include media (md) {
+      max-width: 100%;
     }
 
     &::after {
       content: "";
       position: absolute;
       inset: 0;
-      /* shorthand for top/right/bottom/left: 0 */
       background: radial-gradient(58.91% 35.56% at 66.58% 20.96%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 48.89%, rgba(13, 41, 84, 0.5) 96.26%);
       border-radius: 16px;
       pointer-events: none;
@@ -943,9 +984,6 @@ header {
       object-fit: cover;
       display: block;
       width: 100%;
-
-      @include media (lg) {
-      }
     }
   }
 
@@ -954,6 +992,7 @@ header {
     background-color: var(--primary2);
     padding: ptr(33) ptr(35);
     min-height: 100%;
+
     @include media (lg) {
       padding: ptr(30);
     }
