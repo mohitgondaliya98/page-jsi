@@ -192,6 +192,8 @@
   }
 }
 
+/* Grid gutters
+--------------------------------------------------------------------------------------------------------*/
 .g-32p {
   @include custom-gutter(32);
 
@@ -496,6 +498,8 @@ header {
   }
 }
 
+/* Section
+--------------------------------------------------------------------------------------------------------*/
 .section {
   padding: ptr(60) 0 ptr(100);
   @include flexbox(center, center, column);
@@ -553,6 +557,7 @@ header {
     }
   }
 
+  /* Service style */
   .info-div {
     max-width: ptr(294);
     @include flexbox(center, center, column);
@@ -601,6 +606,7 @@ header {
     }
   }
 
+  /* Offers style */
   .offers-img-div {
     @include flexbox(center, center);
     border-radius: 16px;
@@ -882,6 +888,8 @@ header {
   }
 }
 
+/* Hide/Show 
+--------------------------------------------------------------------------------------------------------*/
 .hide {
   display: none;
 }
@@ -890,6 +898,8 @@ header {
   display: block;
 }
 
+/* Mark
+--------------------------------------------------------------------------------------------------------*/
 .mark-img {
   position: absolute;
   pointer-events: none;
@@ -897,23 +907,17 @@ header {
   right: 0;
 }
 
+/* Mission Section style
+--------------------------------------------------------------------------------------------------------*/
 .details-row {
-  @include flexbox(null, space-between);
-  gap: ptr(32);
-  max-width: ptr(1058);
-
-  @include media (lg) {
-    flex-direction: column;
-  }
 
   .gradiant-layer {
     position: relative;
-    display: inline-block;
+    display: block;
     border-radius: 16px;
-
+    min-height: 100%;
     @include media (lg) {
       max-width: 400px;
-      max-height: auto;
       margin: 0 auto;
 
     }
@@ -933,11 +937,9 @@ header {
       border-radius: 16px;
       object-fit: cover;
       display: block;
+      width: 100%;
 
       @include media (lg) {
-        max-width: 100%;
-        width: 100%;
-        height: auto;
       }
     }
   }
@@ -946,7 +948,7 @@ header {
     border-radius: ptr(16);
     background-color: var(--primary2);
     padding: ptr(33) ptr(35);
-
+    min-height: 100%;
     @include media (lg) {
       padding: ptr(30);
     }
@@ -993,6 +995,8 @@ header {
   }
 }
 
+/* Group of Companies style
+--------------------------------------------------------------------------------------------------------*/
 .company-div {
   @include flexbox(center, space-between);
   gap: ptr(30);
